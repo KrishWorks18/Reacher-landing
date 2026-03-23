@@ -8,7 +8,7 @@ import plans from 'lib/pricing-plans'
 
 import {
   NavHeader,
-  NavFooter,
+  Footer,
   ScrollToTopOnMount,
   DashboardSection,
   OnboardingSection
@@ -21,7 +21,7 @@ import styles from './styles.module.css'
 @observer
 export class DashboardPage extends Component {
   componentWillMount() {
-    window.location.replace('https://app.reacher.email/dashboard')
+    window.location.replace('https://app.no2bounce.com/dashboard')
   }
 
   render() {
@@ -41,7 +41,7 @@ export class DashboardPage extends Component {
 
         <OnboardingSection />
 
-        <NavFooter />
+        <Footer />
       </div>
     )
   }
