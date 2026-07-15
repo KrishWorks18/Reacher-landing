@@ -14,6 +14,12 @@ html {
 
 body {
   padding: 0 !important;
+  /* NOTE: overflow-x:hidden on body breaks position:sticky on nav.
+     Overflow clipping is handled per-section instead. */
+  touch-action: manipulation;
+  /* Prevent iOS text size adjustment that can cause layout repaints */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 h1,
@@ -39,8 +45,7 @@ p {
   margin-bottom: 0;
 }
 
-a[href="https://github.com/Redocly/redoc"]
-{
+a[href="https://github.com/Redocly/redoc"] {
   display: none !important;
 }
 
@@ -62,3 +67,21 @@ summary {
   max-width: 1200px;
   margin: 0 auto;
 }
+
+/* Global nav fix: always solid white, never transparent, always sticky */
+:global(.nav-header) {
+  background: white !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+}
+
+
+@media only screen and (max-width: 767px) {
+  /* iOS Safari fix: the expanded nav dropdown is position:absolute,
+     so the nav must have overflow:visible to show it. */
+  :global(.nav-header) {
+    overflow: visible !important;
+  }
+}
+

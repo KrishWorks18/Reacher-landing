@@ -25,7 +25,8 @@
   color: #fff;
   font-family: var(--font-family);
   font-size: 16px;
-  overflow-x: hidden;
+  /* NOTE: overflow-x: hidden removed here — it breaks position:sticky on children.
+     Instead it is applied on the page body sections below. */
 }
 
 .theme-waves h1,
@@ -137,6 +138,7 @@
 }
 
 @media (min-width: 48em) {
+
   .theme-waves .home-page .hero-section .content,
   .theme-waves .home-page .demo-section .content {
     max-width: var(--max-width-half);
@@ -330,7 +332,7 @@
   margin-bottom: var(--space-m);
 }
 
-.theme-waves .checkout-page > .content {
+.theme-waves .checkout-page>.content {
   display: flex;
   align-items: center;
   padding: var(--space-m);
@@ -340,7 +342,7 @@
 }
 
 @media (min-width: 48em) {
-  .theme-waves .checkout-page > .content {
+  .theme-waves .checkout-page>.content {
     justify-content: center;
     flex-direction: row;
     padding-top: var(--space-xxl);
@@ -419,7 +421,7 @@
   width: 100%;
 }
 
-.theme-waves .login-page .content .form > button.submit {
+.theme-waves .login-page .content .form>button.submit {
   margin-bottom: var(--space-m);
 }
 
@@ -472,6 +474,11 @@
   border-bottom: var(--nav-border-width) solid #e1e1e1;
   padding: var(--side-gutter-half);
   transition: var(--transition-all-fast);
+  background: white !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 @media (min-width: 48em) {
@@ -480,6 +487,14 @@
     padding-left: var(--side-gutter);
     padding-right: var(--side-gutter);
     padding-top: var(--space-m);
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  /* iOS Safari fix: keep overflow visible so the absolute
+     dropdown menu renders outside the sticky nav boundary */
+  .theme-waves .nav-header {
+    overflow: visible !important;
   }
 }
 
@@ -545,7 +560,7 @@
 }
 
 .theme-waves .nav-header .actions .link,
-.theme-waves .nav-header .actions .link > button {
+.theme-waves .nav-header .actions .link>button {
   width: 100%;
 }
 
@@ -567,7 +582,7 @@
 
 .theme-waves header.attached {
   background: white !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 @media (min-width: 48em) {
@@ -600,6 +615,7 @@
 }
 
 @media only screen and (max-width: 767px) {
+
   .theme-waves header .logo-text:not(:hover),
   .theme-waves header .links .link:not(:hover),
   .theme-waves header .logo-text:not(:hover),
@@ -709,29 +725,17 @@
   color: #fff !important;
 }
 
-.theme-waves.dark-bg
-  .nav-header:not(.expanded):not(.attached)
-  .cta-button:global(.secondary),
-.theme-waves.dark-bg
-  .nav-header:not(.expanded):not(.attached)
-  :global(.ant-btn-secondary) {
+.theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) .cta-button:global(.secondary),
+.theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) :global(.ant-btn-secondary) {
   background: transparent !important;
   border-color: #fff !important;
   color: #fff !important;
 }
 
-.theme-waves.dark-bg
-  .nav-header:not(.expanded):not(.attached)
-  .cta-button:global(.secondary):hover,
-.theme-waves.dark-bg
-  .nav-header:not(.expanded):not(.attached)
-  .cta-button:global(.secondary):focus,
-.theme-waves.dark-bg
-  .nav-header:not(.expanded):not(.attached)
-  :global(.ant-btn-secondary):hover,
-.theme-waves.dark-bg
-  .nav-header:not(.expanded):not(.attached)
-  :global(.ant-btn-secondary):focus {
+.theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) .cta-button:global(.secondary):hover,
+.theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) .cta-button:global(.secondary):focus,
+.theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) :global(.ant-btn-secondary):hover,
+.theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) :global(.ant-btn-secondary):focus {
   background: var(--color-primary) !important;
   border-color: var(--color-primary) !important;
   color: #fff !important;
@@ -763,25 +767,16 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .theme-waves.dark-bg
-    .nav-header:not(.expanded):not(.attached)
-    .cta-button:global(.secondary),
-  .theme-waves.dark-bg
-    .nav-header:not(.expanded):not(.attached)
-    :global(.ant-btn-secondary) {
+
+  .theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) .cta-button:global(.secondary),
+  .theme-waves.dark-bg .nav-header:not(.expanded):not(.attached) :global(.ant-btn-secondary) {
     background: transparent !important;
     border-color: var(--color-primary) !important;
     color: var(--color-primary) !important;
   }
 
-  .theme-waves
-    .docs-page
-    .nav-header:not(.expanded)
-    .cta-button:global(.secondary),
-  .theme-waves
-    .docs-page
-    .nav-header:not(.expanded)
-    :global(.ant-btn-secondary) {
+  .theme-waves .docs-page .nav-header:not(.expanded) .cta-button:global(.secondary),
+  .theme-waves .docs-page .nav-header:not(.expanded) :global(.ant-btn-secondary) {
     background: transparent !important;
     border-color: #fff !important;
     color: #fff !important;
@@ -1125,6 +1120,7 @@
 .theme-waves .docs-page p {
   font-family: var(--font-family);
 }
+
 /* ===============================
    FINAL FOOTER GAP FIX
    =============================== */
@@ -1145,4 +1141,3 @@
   height: 120px !important;
   bottom: -24px !important;
 }
-

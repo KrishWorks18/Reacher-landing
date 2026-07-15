@@ -4,7 +4,6 @@ import { observer, inject } from 'mobx-react'
 import { withTracker } from 'lib/with-tracker'
 
 import {
-  NavHeader,
   NavFooter,
   ScrollToTopOnMount,
   HeroSection,
@@ -17,7 +16,8 @@ import {
   Footer,
   CTASection,
   DemoSection,
-  IndieSection
+  IndieSection,
+  CustomNavHeader
 } from 'components'
 
 import styles from './styles.module.css'
@@ -34,7 +34,7 @@ export class HomePage extends Component {
       <div className={theme(styles, 'home-page')}>
         <ScrollToTopOnMount />
 
-        <NavHeader />
+        <CustomNavHeader />
 
         <div className={theme(styles, 'main')}>
           <div

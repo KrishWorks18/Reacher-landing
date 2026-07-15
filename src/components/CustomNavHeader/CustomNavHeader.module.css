@@ -1,0 +1,315 @@
+/* =============================================
+   Custom Nav Header — Premium Redesign
+   ============================================= */
+
+.nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow: 0 1px 20px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
+  overflow: visible;
+}
+
+.nav.scrolled {
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.1);
+}
+
+/* ---- Inner container ---- */
+.inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+/* ---- Logo ---- */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logoImg {
+  height: 36px;
+  width: 36px;
+  object-fit: contain;
+}
+
+.logoText {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logoName {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.3px;
+}
+
+.logoSub {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 10px;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.logoSubImg {
+  height: 10px;
+  object-fit: contain;
+  opacity: 0.7;
+}
+
+/* ---- Desktop Links ---- */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex: 1;
+  justify-content: center;
+}
+
+.link {
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #4b5563;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+  white-space: nowrap;
+}
+
+.link:hover {
+  background: #f3f4f6;
+  color: #6c47ff;
+}
+
+.linkActive {
+  color: #6c47ff;
+  background: #f0ecff;
+}
+
+/* ---- Desktop Actions ---- */
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.btnLogin {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6c47ff;
+  background: transparent;
+  border: 1.5px solid #6c47ff;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btnLogin:hover {
+  background: #6c47ff;
+  color: white;
+  box-shadow: 0 4px 12px rgba(108, 71, 255, 0.3);
+}
+
+.btnCta {
+  padding: 8px 18px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(135deg, #6c47ff 0%, #9b6dff 100%);
+  border: none;
+  text-decoration: none;
+  transition: box-shadow 0.2s, transform 0.2s, opacity 0.2s;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(108, 71, 255, 0.35);
+}
+
+.btnCta:hover {
+  opacity: 0.9;
+  box-shadow: 0 6px 20px rgba(108, 71, 255, 0.45);
+  transform: translateY(-1px);
+}
+
+/* ---- Hamburger Button ---- */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+  flex-shrink: 0;
+  padding: 0;
+}
+
+.burger:hover {
+  background: #f9fafb;
+  border-color: #d1d5db;
+}
+
+.burgerLine {
+  width: 18px;
+  height: 2px;
+  background: #374151;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate burger → X when open */
+.burgerOpen .burgerLine:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.burgerOpen .burgerLine:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.burgerOpen .burgerLine:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =============================================
+   Mobile Dropdown
+   ============================================= */
+@media only screen and (max-width: 767px) {
+  .links,
+  .actions {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  /* Dropdown is position:absolute — nav stays the same
+     height. Page content NEVER moves → no blank screen on iOS. */
+  .dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-top: 1px solid #f3f4f6;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.12);
+    padding: 12px 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 999;
+  }
+
+  .dropdownLink {
+    display: flex;
+    align-items: center;
+    padding: 12px 8px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #374151;
+    text-decoration: none;
+    border-radius: 10px;
+    border-bottom: 1px solid #f9fafb;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .dropdownLink:last-of-type {
+    border-bottom: none;
+  }
+
+  .dropdownLink:hover {
+    background: #f5f3ff;
+    color: #6c47ff;
+    padding-left: 12px;
+  }
+
+  .dropdownLinkIcon {
+    margin-right: 10px;
+    font-size: 18px;
+    width: 24px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .dropdownDivider {
+    height: 1px;
+    background: #f3f4f6;
+    margin: 8px 0;
+  }
+
+  .dropdownActions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .dropdownBtnLogin {
+    display: block;
+    text-align: center;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #6c47ff;
+    border: 1.5px solid #6c47ff;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .dropdownBtnLogin:hover {
+    background: #f5f3ff;
+  }
+
+  .dropdownBtnCta {
+    display: block;
+    text-align: center;
+    padding: 13px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    color: white;
+    background: linear-gradient(135deg, #6c47ff 0%, #9b6dff 100%);
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(108, 71, 255, 0.35);
+    transition: opacity 0.2s;
+  }
+
+  .dropdownBtnCta:hover {
+    opacity: 0.9;
+  }
+}
+
+/* Desktop: hide dropdown at all times */
+@media only screen and (min-width: 768px) {
+  .dropdown {
+    display: none !important;
+  }
+}

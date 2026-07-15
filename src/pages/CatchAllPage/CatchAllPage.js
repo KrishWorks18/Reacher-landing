@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import { Section, NavHeader, ScrollToTopOnMount } from 'react-saasify'
+import { Section, ScrollToTopOnMount } from 'react-saasify'
 import { theme } from 'react-saasify'
 import { withTracker } from 'lib/with-tracker'
 
-import { Footer } from 'components'
+import { Footer, CustomNavHeader } from 'components'
 import styles from './styles.module.css'
 
 @withTracker
@@ -25,7 +25,7 @@ export class CatchAllPage extends Component {
 
         return (
             <div className={theme(styles, 'proxies-page')}>
-                <NavHeader fixed />
+                <CustomNavHeader />
 
                 <ScrollToTopOnMount />
 
