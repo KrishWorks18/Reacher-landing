@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { handleAuth, theme } from 'react-saasify'
 
-import { SignupForm, Paper, NavHeader } from 'components'
+import { SignupForm, Paper, CustomNavHeader } from 'components'
 
 import { withTracker } from 'lib/with-tracker'
 import deployment from 'lib/deployment'
@@ -34,7 +34,7 @@ export class SignupPage extends Component {
 
     return (
       <div className={theme(styles, 'signup-page')}>
-        <NavHeader fixed />
+        <CustomNavHeader />
 
         <div className={theme(styles, 'content')}>
           <Paper className={theme(styles, 'body')}>

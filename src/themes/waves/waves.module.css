@@ -491,22 +491,12 @@
 }
 
 @media only screen and (max-width: 767px) {
-  .theme-waves .nav-header.expanded {
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    background: white !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
-    max-height: 100vh;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 16px;
+  /* iOS Safari fix: keep overflow visible so the absolute
+     dropdown menu renders outside the sticky nav boundary */
+  .theme-waves .nav-header {
+    overflow: visible !important;
   }
 }
-
-
 
 .theme-waves .nav-header .link {
   color: var(--hero-color) !important;

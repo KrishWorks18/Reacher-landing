@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { observer, inject } from 'mobx-react'
 import { handleAuth, theme } from 'react-saasify'
 
-import { LoginForm, Paper, NavHeader } from 'components'
+import { LoginForm, Paper, CustomNavHeader } from 'components'
 
 import { withTracker } from 'lib/with-tracker'
 import deployment from 'lib/deployment'
@@ -36,7 +36,7 @@ export class LoginPage extends Component {
 
     return (
       <div className={theme(styles, 'login-page')}>
-        <NavHeader fixed />
+        <CustomNavHeader />
 
         <div className={theme(styles, 'content')}>
           <Paper className={theme(styles, 'body')}>
