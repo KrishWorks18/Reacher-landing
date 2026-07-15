@@ -14,6 +14,14 @@ html {
 
 body {
   padding: 0 !important;
+  /* iOS Chrome/Safari: prevent blank screen on touch/scroll */
+  -webkit-overflow-scrolling: touch;
+  /* NOTE: overflow-x:hidden on body breaks position:sticky on nav.
+     Overflow clipping is handled per-section instead. */
+  touch-action: manipulation;
+  /* Prevent iOS text size adjustment that can cause layout repaints */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 h1,
@@ -61,4 +69,12 @@ summary {
 :global(.swagger-ui) {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Global nav fix: always solid white, never transparent, always sticky */
+:global(.nav-header) {
+  background: white !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
 }

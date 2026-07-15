@@ -25,7 +25,8 @@
   color: #fff;
   font-family: var(--font-family);
   font-size: 16px;
-  overflow-x: hidden;
+  /* NOTE: overflow-x: hidden removed here — it breaks position:sticky on children.
+     Instead it is applied on the page body sections below. */
 }
 
 .theme-waves h1,
@@ -472,6 +473,11 @@
   border-bottom: var(--nav-border-width) solid #e1e1e1;
   padding: var(--side-gutter-half);
   transition: var(--transition-all-fast);
+  background: white !important;
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1000 !important;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
 }
 
 @media (min-width: 48em) {
@@ -567,7 +573,7 @@
 
 .theme-waves header.attached {
   background: white !important;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
 }
 
 @media (min-width: 48em) {
