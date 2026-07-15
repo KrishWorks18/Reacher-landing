@@ -47,8 +47,7 @@ p {
   margin-bottom: 0;
 }
 
-a[href="https://github.com/Redocly/redoc"]
-{
+a[href="https://github.com/Redocly/redoc"] {
   display: none !important;
 }
 
@@ -77,4 +76,31 @@ summary {
   position: sticky !important;
   top: 0 !important;
   z-index: 1000 !important;
+}
+
+
+@media only screen and (max-width: 767px) {
+  :global(.nav-header.expanded) {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    background: white !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12) !important;
+    max-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+
+  :global(.nav-header:not(.expanded)) {
+    position: sticky !important;
+    top: 0 !important;
+  }
+
+
+  :global(body.mobile-nav-open) {
+    padding-top: 60px;
+  }
 }
