@@ -76,6 +76,7 @@
     "react-app-rewired": "^2.2.1",
     "saasify": "^1.20.3",
     "source-map-explorer": "^2.0.1",
+    "webpack": "^4.47.0",
     "webpack-bundle-analyzer": "^3.4.1",
     "webpack-cli": "^3.3.8"
   },
